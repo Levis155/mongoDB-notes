@@ -7,6 +7,7 @@
                  start-page="Introduction.md">
 
     <toc-element topic="Introduction.md"/>
+    <toc-element topic="MongoDB-Installation-and-Setup.md"/>
     <toc-element topic="Working-with-Mongo-CLI.md"/>
     <toc-element topic="Data-Insertion.md"/>
 </instance-profile>
