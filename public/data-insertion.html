@@ -1,0 +1,47 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#DE3358"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-17T12:23:19.082177"><title>Data Insertion | MongoDB</title><script type="application/json" id="virtual-toc-data">[]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Data Insertion | MongoDB"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="MongoDB Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/data-insertion.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Data Insertion | MongoDB"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/data-insertion.html#webpage",
+    "url": "writerside-documentation/data-insertion.html",
+    "name": "Data Insertion | MongoDB",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "MongoDB Help"
+}</script><!-- End Schema.org --></head><body data-id="Data-Insertion" data-main-title="Data Insertion" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>MongoDB  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Data-Insertion" id="Data-Insertion.md">Data Insertion</h1><ol class="list _decimal" id="mx6qdt_3" type="1"><li class="list__item" id="mx6qdt_22"><p id="mx6qdt_23">On the Mongo client, run the command below to insert data into the catalog collection. Each data point is referred to as a <span class="control" id="mx6qdt_24">document</span> in MongoDB.</p></li></ol><div class="code-block" data-lang="mongodb">
+db.catalog.insert({
+  &quot;_id&quot;:&quot;clog1&quot;,
+  &quot;name&quot;:&quot;product catalog&quot;
+})
+</div><p id="mx6qdt_5">The above command inserts the JSON document <span class="control" id="mx6qdt_25">{ &quot;_id&quot;:&quot;clog1&quot;, &quot;name&quot;:&quot;product catalog&quot; }</span> into the collection.</p><ol class="list _decimal" id="mx6qdt_6" type="1" start="2"><li class="list__item" id="mx6qdt_26"><p id="mx6qdt_27">Now, create the Category collection by running the following command on the MongoClient.</p></li></ol><div class="code-block" data-lang="mongodb">
+db.createCollection(&quot;category&quot;)
+</div><ol class="list _decimal" id="mx6qdt_8" type="1" start="3"><li class="list__item" id="mx6qdt_28"><p id="mx6qdt_29">On the Mongo client, run the following command, to insert a document inside the catalog collection.</p></li></ol><div class="code-block" data-lang="mongodb">
+db.category.insert({
+  &quot;category_name&quot;:&quot;Smart Phone&quot;,
+  &quot;child_categories&quot;:[],
+  &quot;parent_categories&quot;:[],
+})
+</div><ol class="list _decimal" id="mx6qdt_10" type="1" start="4"><li class="list__item" id="mx6qdt_30"><p id="mx6qdt_31">To insert multiple documents, you can enclose them in square brackets. On the Mongo client, run the command below to insert two documents at a time.</p></li></ol><div class="code-block" data-lang="mongodb">
+db.category.insert([
+{
+  &quot;category_name&quot;:&quot;Apple Products&quot;,
+  &quot;child_categories&quot;:[],
+  &quot;parent_categories&quot;:[],
+},
+{
+  &quot;category_name&quot;:&quot;Apple Phones&quot;,
+  &quot;child_categories&quot;:[],
+  &quot;parent_categories&quot;:[&quot;ct001&quot;,&quot;ct002&quot;],
+}])
+</div><ol class="list _decimal" id="mx6qdt_12" type="1" start="5"><li class="list__item" id="mx6qdt_32"><p id="mx6qdt_33">On the Mongo client, run the command below to count the number of documents.</p></li></ol><div class="code-block" data-lang="mongodb">
+db.category.countDocuments()
+</div><p id="mx6qdt_14">This command gives you the number of documents in the collection. You inserted one document first and then two document as an array. The output should reflect 3 documents.</p><ol class="list _decimal" id="mx6qdt_15" type="1" start="6"><li class="list__item" id="mx6qdt_34"><p id="mx6qdt_35">On the Mongo client, run the command below to list all documents in the category collection.</p></li></ol><div class="code-block" data-lang="mongodb">
+db.category.find()
+</div><p id="mx6qdt_17">This command lists all the documents in the collection <span class="control" id="mx6qdt_36">category</span>.</p><p id="mx6qdt_18">Notice that MongoDB automatically adds an <span class="control" id="mx6qdt_37">_id</span> field to every document in order to uniquely identify the document.</p><ol class="list _decimal" id="mx6qdt_19" type="1" start="7"><li class="list__item" id="mx6qdt_38"><p id="mx6qdt_39">To find a particular document, you can specify the search criteria in the <span class="control" id="mx6qdt_40">find</span> command.</p></li></ol><div class="code-block" data-lang="mongodb">
+db.category.find({category_name:&quot;Apple Products&quot;})
+</div><p id="mx6qdt_21">This command lists all the documents in the collection <span class="control" id="mx6qdt_41">category</span> which match the condition.</p><div class="last-modified">17 July 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="working-with-mongo-cli.html" class="navigation-links__prev">Working with Mongo CLI</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>
